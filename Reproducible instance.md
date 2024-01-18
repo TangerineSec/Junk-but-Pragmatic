@@ -44,4 +44,4 @@ copy /b 要合并的所有文件 合并后的文件名
 
 我在倒数第二行找到，下面kali更改为unix的样子。
 
-![image-20240118173041461](C:/Users/86150/AppData/Roaming/Typora/typora-user-images/image-20240118173041461.png)
+![image-20240118173041461](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240118173041461.png)
