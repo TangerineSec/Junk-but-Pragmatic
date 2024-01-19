@@ -8,3 +8,4 @@ app测试
 
 - 删除cookie值
 - type:'phone'，类型字段修改为admin
+- error_code:10002，错误字段修改为10001
