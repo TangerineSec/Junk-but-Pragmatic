@@ -55,3 +55,26 @@ manual手册使用的键位图，快捷键图：
 有趣的是，一个小时非常有价值，总的来说，仅仅让我解决一个问题。
 
 https://www.baeldung.com/linux/man-pages
+
+## 问题：man命令对于每一个函数包括什么内容？
+
+- man命令如何使用不影响之前的内容查看？
+- 如何在windows的git bash上安装man命令？
+- man命令如何移动？
+- man命令对于每一个函数包括什么内容？
+- 如何快速查看主要的信息？
+
+对于此问题，首先输入`man strcat`查看如何使用命令查看strcat函数的原型。
+
+![image-20240121085317002](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240121085317002.png)
+
+出现的第一页是前三部分，然后分别是函数名的来源，函数原型摘要以及函数功能描述三部分。其中第一部分帮助理解函数取名的来源，第二部分用于查看函数的原型，第三部分指出了函数的漏洞来源，暗示strcat函数连接两个字符串时，可能因为dest空间不够大，所以导致缓冲区溢出漏洞和程序行为不可测。
+
+![image-20240121090752420](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240121090752420.png)
+
+根据快捷键d，按下表示下滑半个窗口。所以。
+
+原来不只是难的容易睡觉，简单的也会导致睡觉。
+
+
+
