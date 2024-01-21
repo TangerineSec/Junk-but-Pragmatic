@@ -68,7 +68,9 @@ https://www.baeldung.com/linux/man-pages
 
 ![image-20240121085317002](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240121085317002.png)
 
-出现的第一页是前三部分，然后分别是函数名的来源，函数原型摘要以及函数功能描述三部分。其中第一部分帮助理解函数取名的来源，第二部分用于查看函数的原型，第三部分指出了函数的漏洞来源，暗示strcat函数连接两个字符串时，可能因为dest空间不够大，所以导致缓冲区溢出漏洞和程序行为不可测。
+​	出现的第一页是前三部分，然后分别是函数名的来源，函数原型摘要以及函数功能描述三部分。其中第一部分帮助理解函数取名的来源，第二部分用于查看函数的原型，第三部分指出了函数的漏洞来源，暗示strcat函数连接两个字符串时，可能因为dest空间不够大，所以导致缓冲区溢出漏洞和程序行为不可测。
+
+`	strcat`函数用于将源字符串（src）连接到目标字符串（dest）的末尾。与`strncat`不同，`strcat`函数会将整个源字符串连接到目标字符串的末尾，直到遇到源字符串的空字符（'\0'）。需要确保目标字符串有足够的空间来容纳源字符串的字符。
 
 ![image-20240121090752420](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240121090752420.png)
 
@@ -78,3 +80,59 @@ https://www.baeldung.com/linux/man-pages
 
 ![image-20240121095507548](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240121095507548.png)
 
+实现过程及代码解释如下：
+
+1. 使用`strlen`函数计算目标字符串`dest`的长度，并将结果存储在`dest_len`变量中。
+2. 声明一个变量`i`，用作循环计数器。
+3. `for`循环从`i = 0`开始迭代，直到`i`达到`n-1`或者`src`字符串的末尾（`src[i] != '\0'`）。
+4. 在循环内部，将`src`字符串的每个字符复制到`dest`字符串的位置`dest[dest_len + i]`。这样就将`src`的字符追加到了`dest`的末尾。
+5. 循环结束后，将空字符（`'\0'`）添加到连接后的字符串的末尾，即`dest[dest_len + i]`。这样确保连接后的字符串被正确终止。
+6. 最后，函数返回指向连接后的字符串的指针，即`dest`。
+
+```c
+char* strncat(char *dest, const char *src, size_t n)
+{
+    size_t dest_len = strlen(dest);  // 计算目标字符串dest的长度
+    size_t i;
+
+    for (i = 0; i < n && src[i] != '\0'; i++)
+    {
+        dest[dest_len + i] = src[i];  // 将src字符串的字符复制到dest字符串的末尾
+    }
+
+    dest[dest_len + i] = '\0';  // 在连接后的字符串末尾添加空字符
+
+    return dest;  // 返回连接后的字符串的指针
+}
+```
+
+如何让这段程序运行起来？
+
+要让这个程序运行起来，你需要在程序中调用该函数并提供合适的参数。以下是一个示例程序，展示如何调用 `strncat` 函数并输出结果：
+
+```c
+#include <stdio.h>
+
+// 函数声明
+char* strncat(char *dest, const char *src, size_t n);
+
+int main(void) {
+    char dest[20] = "Hello";
+    const char *src = " World";
+    size_t n = 6;
+
+    // 调用 strncat 函数
+    strncat(dest, src, n);
+
+    // 输出连接后的字符串
+    printf("Concatenated string: %s\n", dest);
+
+    return 0;
+}
+```
+
+在上面的示例中，在 `main` 函数中声明了一个目标字符串 `dest`，一个源字符串 `src`，以及一个表示要连接的字符数的变量 `n`。然后调用 `strncat` 函数将 `src` 字符串的前 `n` 个字符连接到 `dest` 字符串的末尾。最后，使用 `printf` 函数输出连接后的字符串。
+
+你可以将上面的示例代码保存为一个 C 语言源文件（例如 `program.c`），然后使用 C 编译器编译并运行它。运行程序后，你将在输出中看到连接后的字符串。请确保在编译和运行程序之前，你已经正确配置了 C 编译环境。
+
+![image-20240121101512897](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240121101512897.png)
