@@ -74,7 +74,7 @@ https://www.baeldung.com/linux/man-pages
 
 根据快捷键d，按下表示下滑半个窗口。所以。
 
-原来不只是难的容易睡觉，简单的也会导致睡觉。
+原来不只是难的容易睡觉，简单的也会导致睡觉->开窗关空调，开热气->不冷，但是开始空气清新。
 
-
+![image-20240121095507548](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240121095507548.png)
 
