@@ -340,4 +340,8 @@ lrwxrwxrwx 1 user user 7 Jan 1 00:00 symlink.txt -> target.txt
 
 在腾讯云服务器中，你可以使用相同的方法查看文件详细信息并了解文件颜色的含义。
 
-![image-20240123201447206](C:/Users/86150/AppData/Roaming/Typora/typora-user-images/image-20240123201447206.png)
+![image-20240123201447206](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240123201447206.png)
+
+## 
+
+![image-20240123202519266](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240123202519266.png)
