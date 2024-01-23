@@ -441,3 +441,113 @@ kill -9 <PID>
 同样，将 `<PID>` 替换为要终止的 Python 进程的实际 PID。
 
 请注意，终止进程可能会导致未保存的数据丢失，因此请确保在终止之前保存了必要的数据。
+
+## 报错分析：无法运行
+
+![image-20240124031319534](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240124031319534.png)
+
+![image-20240124031304440](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240124031304440.png)
+
+从报错信息中可以得出以下分析：
+
+1. 报错信息显示导入错误（ImportError），具体错误消息是 Pandas 要求安装 'openpyxl' 的版本应为 '3.0.10' 或更高版本，但当前安装的版本是 '3.0.7'。这意味着当前安装的 'openpyxl' 版本不符合 Pandas 的要求。
+
+2. 报错信息还包含了一个 HTTP 请求信息，请求路径为 /api/export_html，参数包括 filename1 和 sheet1。
+
+根据报错信息可以尝试解决以下问题：
+
+- 检查当前安装的 'openpyxl' 版本，确保其版本号为 '3.0.10' 或更高版本。如果版本不符合要求，可以尝试更新 'openpyxl' 到符合要求的版本。
+
+- 如果使用的是 Python 环境，可以使用以下命令来升级 'openpyxl'：
+  ```
+  pip install --upgrade openpyxl
+  ```
+
+- 如果报错出现在特定的代码文件中，可以尝试在该文件中添加相关的导入语句或更新依赖版本，以确保 'openpyxl' 版本符合要求。
+
+- 如果报错信息中的 HTTP 请求相关，可以检查代码中涉及到该请求的部分，确保传递给请求的参数（如 filename1 和 sheet1）正确且符合预期。
+
+注意：报错信息中的请求路径和参数仅供参考，具体的处理方式可能需要根据实际情况进行调整。
+
+## 为windows创建别名
+
+https://www.cnblogs.com/mq0036/p/16255494.html
+
+## 门户与首页
+
+门户为open.html
+
+首页为index.html
+
+nginx设置首页文件后，使用链接跳转。例如访问：web.find0day.cn
+
+第三个访问analysis.find0day.cn
+
+```
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+}
+
+server {
+       listen 80;
+       listen [::]:80;
+
+       server_name website-0.find0day.cn;
+
+       root /var/www/website-0;
+       index index.html;
+
+       location / {
+               try_files $uri $uri/ =404;
+       }
+}
+server {
+       listen 80;
+       listen [::]:80;
+
+       server_name analysis.find0day.cn;
+
+       root /var/www/analysis/dist; # 前端文件夹。
+       index index.html;
+
+        location /api/ {
+                proxy_pass  http://127.0.0.1:8888/api/;
+        }
+}
+
+server {
+       listen 80;
+       listen [::]:80;
+
+       server_name web.find0day.cn;
+
+       root /var/www/web;
+       index index.html;
+
+       location / {
+               try_files $uri $uri/ =404;
+       }
+}
+```
+
+## 另外起一个网站打开，不关闭本页面，html代码
+
+要在当前页面中打开一个新的网站而不关闭本页面，你可以使用`target="_blank"`属性来指定链接的目标为新的浏览器标签或窗口。以下是一个简单的示例，展示如何在新标签中打开一个网站：
+
+```html
+<a href="https://www.example.com" target="_blank">打开新网站</a>
+```
+
+将上述代码插入到你的HTML文件中的适当位置，将"https://www.example.com"替换为你想要打开的网站的URL。当用户点击该链接时，浏览器将在一个新的标签页中打开指定的网站。
