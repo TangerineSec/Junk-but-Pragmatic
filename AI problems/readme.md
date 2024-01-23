@@ -551,3 +551,15 @@ server {
 ```
 
 将上述代码插入到你的HTML文件中的适当位置，将"https://www.example.com"替换为你想要打开的网站的URL。当用户点击该链接时，浏览器将在一个新的标签页中打开指定的网站。
+
+## 如何添加CDN，使用cf的cdn隐藏真实ip
+
+![image-20240124050416602](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240124050416602.png)
+
+访问及其快速：
+
+![image-20240124054133307](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240124054133307.png)
+
+![image-20240124054319238](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240124054319238.png)
+
+![image-20240124054403480](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240124054403480.png)
