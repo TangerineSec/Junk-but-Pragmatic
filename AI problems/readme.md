@@ -344,6 +344,53 @@ lrwxrwxrwx 1 user user 7 Jan 1 00:00 symlink.txt -> target.txt
 
 ## 使用echo进行输出，使用命令gl输出当天的commit数量。
 
-![image-20240123202519266](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240123202519266.png)
+要查看当天提交的 commit 数量，可以使用 `git log` 命令结合一些参数和选项来实现。下面是一种可能的方法：
 
-![image-20240123202632853](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240123202632853.png)
+```shell
+git log --since=midnight --until=now --format=oneline | wc -l
+```
+
+这个命令的含义如下：
+
+- `--since=midnight`：指定起始时间为今天的午夜（即当天的凌晨）。
+- `--until=now`：指定结束时间为当前时间。
+- `--format=oneline`：以单行的形式输出 commit 信息，每一行包含一个 commit 的哈希值和提交消息。
+- `| wc -l`：通过管道将 `git log` 的输出传递给 `wc -l` 命令，用于统计行数（即 commit 数量）。
+
+运行这个命令后，将会输出当天提交的 commit 数量。请注意，这个结果包括了所有分支上的提交。如果你只想查看当前分支上当天的提交数量，可以在运行命令之前切换到相应的分支。
+
+![image-20240123202825940](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240123202825940.png)
+
+![image-20240123202751459](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240123202751459.png)
+
+## 如何为子域名添加证书
+
+![image-20240123204611972](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240123204611972.png)
+
+## 可测试地址：m3u8
+
+持续可用网站：https://hlsjs.video-dev.org/demo/
+
+1. **Tears of Steel m3u8**
+   `https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8`
+2. **fMP4 m3u8**
+   `https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8`
+3. **MP4 m3u8**: `https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.mp4/.m3u8`
+4. **Live Akamai m3u8**
+   `https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8`
+5. **Live Akamai m3u8**
+   `https://moctobpltc-i.akamaihd.net/hls/live/571329/eight/playlist.m3u8`
+6. **Dolby VOD m3u8**
+   `http://d3rlna7iyyu8wu.cloudfront.net/skip_armstrong/skip_armstrong_stereo_subs.m3u8` – this is served over HTTP, so it might result in media errors. To avoid this, reload your HLS player using HTTP (less secure, but, you can playback this stream!)
+7. **Dolby Multichannel m3u8**
+   `http://d3rlna7iyyu8wu.cloudfront.net/skip_armstrong/skip_armstrong_multichannel_subs.m3u8` – this is served over HTTP, so it might result in media errors. To avoid this, reload your HLS player using HTTP (less secure, but, you can playback this stream!)
+8. **Dolby Multilanguage m3u8**
+   `http://d3rlna7iyyu8wu.cloudfront.net/skip_armstrong/skip_armstrong_multi_language_subs.m3u8` – this is served over HTTP, so it might result in media errors. To avoid this, reload your HLS player using HTTP (less secure, but, you can playback this stream!)
+9. **Azure HLSv4 m3u8** (copy paste in your browser and it will download the m3u8)
+   `http://amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest(format=m3u8-aapl)` .. again, served over HTTP.
+10. **Azure HLSv4 m3u8** (copy paste in your browser and it will download the m3u8)
+    `http://amssamples.streaming.mediaservices.windows.net/69fbaeba-8e92-4740-aedc-ce09ae945073/AzurePromo.ism/manifest(format=m3u8-aapl)` served over HTTP.
+11. **Azure 4K HLSv4 m3u8** (copy paste in your browser and it will download the m3u8)
+    `http://amssamples.streaming.mediaservices.windows.net/634cd01c-6822-4630-8444-8dd6279f94c6/CaminandesLlamaDrama4K.ism/manifest(format=m3u8-aapl)` served over HTTP.
+
+![image-20240124012306372](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240124012306372.png)
