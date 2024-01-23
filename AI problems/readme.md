@@ -394,3 +394,50 @@ git log --since=midnight --until=now --format=oneline | wc -l
     `http://amssamples.streaming.mediaservices.windows.net/634cd01c-6822-4630-8444-8dd6279f94c6/CaminandesLlamaDrama4K.ism/manifest(format=m3u8-aapl)` served over HTTP.
 
 ![image-20240124012306372](https://githubwiki.oss-cn-shanghai.aliyuncs.com/img/typroa/image-20240124012306372.png)
+
+## 后台运行python，并且显示相关pid信息。
+
+要在后台运行 Python 脚本并获取相关的进程 ID (PID)，你可以使用以下命令：
+
+```shell
+python your_script.py > output.log &
+echo $!
+```
+
+在这个命令中，`$!` 是一个特殊的变量，它会返回最近一个在后台运行的进程的 PID。通过在脚本运行后立即使用 `echo $!` 命令，你可以获取 Python 脚本的进程 ID。
+
+执行上述命令后，将会在终端输出 Python 脚本的进程 ID。你可以将其记录下来，以便以后进行操作，如删除该进程。
+
+请注意，`output.log` 是一个示例文件名，用于将脚本的输出重定向到文件中。你可以根据需要自行指定输出文件名。
+
+
+
+要终止后台运行的 Python 进程，你可以使用 `kill` 命令发送适当的信号。以下是一种常用的方法：
+
+1. 首先，使用 `ps` 命令结合 `grep` 过滤器，找到正在运行的 Python 进程的 PID。例如，假设你的 Python 进程执行的是 `your_script.py`，可以使用以下命令获取其 PID：
+
+   ```shell
+   ps aux | grep your_script.py
+   ```
+
+   这将列出匹配进程名为 `your_script.py` 的所有进程，并显示它们的详细信息，包括 PID。
+
+2. 从输出中找到你要终止的 Python 进程的 PID。
+
+3. 使用 `kill` 命令发送适当的信号来终止进程。常用的信号是 SIGTERM（终止信号），它会请求进程正常退出。使用以下命令将信号发送给进程：
+
+   ```shell
+   kill <PID>
+   ```
+
+   将 `<PID>` 替换为你要终止的 Python 进程的实际 PID。
+
+如果进程没有正常退出，你可以尝试使用更强制的信号，如 SIGKILL。这个信号会立即终止进程，但也可能导致某些资源无法正确释放。使用以下命令发送 SIGKILL 信号：
+
+```shell
+kill -9 <PID>
+```
+
+同样，将 `<PID>` 替换为要终止的 Python 进程的实际 PID。
+
+请注意，终止进程可能会导致未保存的数据丢失，因此请确保在终止之前保存了必要的数据。
