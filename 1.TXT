@@ -1,6 +1,7 @@
 要不尝试每隔一段图和代码就进行问题总结，我想说的是进行问题划分，以及段落划分。而不是按文章层级分段翻译。因为要保证完成效率。
 
-如何以问题的形式总结以下文字的内容，要求问题的答案能够确实在文字中能够找到，然后要求问题的数量为两个次要问题，两个三个次要问题。
+以下是几个gpt的提示词：
+如何以问题的形式总结以下文字所描述的内容，要求问题的答案能够确实在文字中能够找到，然后要求问题的数量为两个次要问题和三个主要问题。要求问题场景符合计算机类文章所使用的场景。
 
 Discovery of two vulnerabilities in secure world components
 Exploitation to get code execution in a trusted driver, while not having a debugger for this obscure environment
@@ -15,3 +16,67 @@ ARM TrustZone: security extensions that ship with ARM v7-A and v8-A. They basica
 Trusted Execution Environment: aka TEE encompasses the applets, libraries and operating system living in the secure world
 Samsung Knox: a set of trusted components and normal world application components, such as Android apps and libraries. The terms “secure” and “trusted” are swappable for the rest of the article. It indicates a small, mastered TCB hosted in a secure execution environment
 TEEgris: Samsung Trusted OS that ships some Exynos-based devices. In the past, Samsung used to ship with Kinibi, a different trusted OS which has been the subject of security publications. Even Samsung models may ship with Qualcomm SoCs, and its own trusted OS called QSEE. High level descriptions of various TEE and their vulnerabilities can be found in SoK
+
+主要问题：
+
+发现了哪两个安全世界组件的漏洞？
+在已经绕过了SELinux、绕过了seccomp限制并完全掌握了Linux内核的情况下，下一步可以做什么？
+ARM TrustZone和Trusted Execution Environment（TEE）分别是什么？它们之间的关系是什么？
+次要问题：
+
+如何在没有调试器的情况下利用这些漏洞来在受信任的驱动程序中执行代码？
+如何利用aarch32 T32指令集来找到适合的栈转移点？
+
+
+
+TEEgris information is rather scarce on the Internet, we have only found a few sources: Federico menaniri @RISCURE, who exploits several vulnerabilities to gain secure memory write from normal world and Alexander tarasikov, who emulates secure boot using qemu and performs afl fuzzing of trusted applets
+
+Trusted applets: applications that run in the TEE, to provide additional security protections against compromise in the normal world. For example, quoting Google Android documentation:
+
+Android applications concerned by security may use Android keystore to save their sensitive cryptographic keys to be compromised in the normal world
+
+For the rest of the article, the device we used is SM-J330FN, with early 2019 firmware J330FNXXU3BSA2_J330FNXEF3BSA2_XEF. It ships Exynos7570 SoC, which is based on ARMv8-A design. Samsung has brought to our attention the firmwares based on version Android 12 (or upper) no longer contain the vulnerabilities we present here. More details will be found in sections describing vulnerabilities.
+
+
+主要问题：
+
+在TEEgris中发现了哪些信息？有哪些来源？
+Trusted applets是什么？它们在TEE中的作用是什么？
+在文章中使用的设备是什么？它的固件版本是什么？该设备基于哪种芯片？
+次要问题：
+
+在TEEgris中，如何利用几个漏洞从常规世界获得安全内存写入？
+Alexander Tarasikov使用哪些方法来模拟安全引导并对受信任的应用程序进行AFL模糊测试？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
