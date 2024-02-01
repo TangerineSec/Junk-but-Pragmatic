@@ -1,6 +1,7 @@
 要不尝试每隔一段图和代码就进行问题总结，我想说的是进行问题划分，以及段落划分。而不是按文章层级分段翻译。因为要保证完成效率。
 
 如何以问题的形式总结以下文字的内容，要求问题的答案能够确实在文字中能够找到，然后要求问题的数量为两个次要问题，两个三个次要问题。
+
 Discovery of two vulnerabilities in secure world components
 Exploitation to get code execution in a trusted driver, while not having a debugger for this obscure environment
 Leverage of aarch32 T32 instruction set to find nice stack pivots
