@@ -1,1 +1,16 @@
 要不尝试每隔一段图和代码就进行问题总结，我想说的是进行问题划分，以及段落划分。而不是按文章层级分段翻译。因为要保证完成效率。
+
+如何以问题的形式总结以下文字的内容，要求问题的答案能够确实在文字中能够找到，然后要求问题的数量为两个次要问题，两个三个次要问题。
+Discovery of two vulnerabilities in secure world components
+Exploitation to get code execution in a trusted driver, while not having a debugger for this obscure environment
+Leverage of aarch32 T32 instruction set to find nice stack pivots
+Turning an arbitrary write into an arbitrary code execution
+The hidden world beneath Android
+The story starts where one of the previous stories you have heard about Android ends, with arbitrary code execution in both userland and kernel. Let’s assume we have defused SELinux, bypassed seccomp limitations and have full privileges over Linux kernel. What could we do next?
+
+While Android lives in plain sight, the secure world lives in its shadow. Let us put light on it! First, let’s coin a few terms:
+
+ARM TrustZone: security extensions that ship with ARM v7-A and v8-A. They basically allow the hardware to be partitioned in two: a normal and a secure worlds. In this model, the secure world embeds the most privileged exception level, S-EL3, and secure OS, S-EL1, holds a powerful hand on the hardware devices
+Trusted Execution Environment: aka TEE encompasses the applets, libraries and operating system living in the secure world
+Samsung Knox: a set of trusted components and normal world application components, such as Android apps and libraries. The terms “secure” and “trusted” are swappable for the rest of the article. It indicates a small, mastered TCB hosted in a secure execution environment
+TEEgris: Samsung Trusted OS that ships some Exynos-based devices. In the past, Samsung used to ship with Kinibi, a different trusted OS which has been the subject of security publications. Even Samsung models may ship with Qualcomm SoCs, and its own trusted OS called QSEE. High level descriptions of various TEE and their vulnerabilities can be found in SoK
